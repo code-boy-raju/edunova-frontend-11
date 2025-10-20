@@ -24,7 +24,14 @@ function CourseList() {
     return matchesSearch && matchesCategory;
   });
 
-  const categories = [...new Set(courses.map(c => c.category).filter(Boolean))];
+const categories = [
+  ...new Set(
+    courses
+      .map(c => c.category?.trim().toLowerCase())   // normalize casing & trim
+      .filter(Boolean)
+  )
+].map(cat => cat.charAt(0).toUpperCase() + cat.slice(1));  // capitalize for display
+
   const basePath = user?.role === 'student' ? '/student-dashboard' : '';
 
   if (loading) return <LoadingSpinner message="Loading courses..." />;
@@ -39,55 +46,53 @@ function CourseList() {
   }
 
   return (
-    <div>
-      <div className="d-flex justify-content-between align-items-center mb-4">
+ <div className="course-list-container fade-in">
+      {/* Header */}
+      <div className="course-list-header">
         <h2>Available Courses</h2>
-        <span className="text-muted">{filteredCourses.length} courses found</span>
+        <span>{filteredCourses.length} courses found</span>
       </div>
 
       {/* Search & Filter */}
-      <Row className="mb-4">
-        <Col md={8}>
-          <InputGroup>
-            <InputGroup.Text>🔍</InputGroup.Text>
-            <Form.Control
-              type="text"
-              placeholder="Search courses by title or description..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </InputGroup>
-        </Col>
-        <Col md={4}>
-          <Form.Select
-            value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
-          >
-            <option value="">All Categories</option>
-            {categories.map(cat => (
-              <option key={cat} value={cat}>{cat}</option>
-            ))}
-          </Form.Select>
-        </Col>
-      </Row>
+      <div className="course-filters">
+        <InputGroup>
+          <InputGroup.Text>🔍</InputGroup.Text>
+          <Form.Control
+            type="text"
+            placeholder="Search courses by title or description..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </InputGroup>
+
+        <Form.Select
+          value={categoryFilter}
+          onChange={(e) => setCategoryFilter(e.target.value)}
+        >
+          <option value="">All Categories</option>
+          {categories.map(cat => (
+            <option key={cat} value={cat}>{cat}</option>
+          ))}
+        </Form.Select>
+      </div>
 
       {/* Course Grid */}
       {filteredCourses.length === 0 ? (
         <EmptyState
           icon="🔍"
           title="No courses found"
-          message={searchTerm || categoryFilter 
-            ? "Try adjusting your search or filters" 
-            : "No courses available yet"}
+          message={
+            searchTerm || categoryFilter
+              ? 'Try adjusting your search or filters'
+              : 'No courses available yet'
+          }
         />
       ) : (
-        <Row xs={1} md={2} lg={3} className="g-4">
+        <div className="course-grid">
           {filteredCourses.map(course => (
-            <Col key={course._id}>
-              <CourseCard course={course} basePath={basePath} />
-            </Col>
+            <CourseCard key={course._id} course={course} basePath={basePath} />
           ))}
-        </Row>
+        </div>
       )}
     </div>
   );
