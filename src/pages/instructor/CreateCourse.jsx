@@ -89,7 +89,7 @@ function CreateCourse() {
               <Form.Control
                 type="text"
                 name="title"
-                placeholder="e.g., Introduction to JavaScript"
+                placeholder="e.g., Introduction to React"
                 value={formData.title}
                 onChange={handleChange}
                 isInvalid={!!errors.title}
