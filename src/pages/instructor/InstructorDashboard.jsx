@@ -46,7 +46,7 @@ function InstructorDashboard() {
         </Nav.Link>
         <Nav.Link
           as={NavLink}
-          to="/instructor-dashboard/add-course"
+          to="/instructor-dashboard/create-course"
           className="text-light"
           onClick={onNavigate}
         >

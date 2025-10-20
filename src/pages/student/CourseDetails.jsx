@@ -15,7 +15,6 @@ function CourseDetails() {
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-console.log(course);
 
   useEffect(() => {
     const loadCourse = async () => {

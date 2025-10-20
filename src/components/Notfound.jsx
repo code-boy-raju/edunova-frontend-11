@@ -14,7 +14,7 @@ function NotFound() {
           <p className="text-muted mb-4">
             Oops! The page you're looking for doesn’t exist or may have been moved.
           </p>
-          <Button variant="primary" onClick={() => navigate('/')}>
+          <Button variant="primary" onClick={() => navigate(-1)}>
             Go Back Home
           </Button>
         </Col>
