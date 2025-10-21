@@ -232,10 +232,10 @@ function CourseDetails() {
             <ListGroup.Item
               key={lesson._id}
               className="lesson-item"
-              onClick={basePath?() => navigate(`${basePath}/lesson/${lesson._id}`):<Alert variant="info">
+              onClick={basePath?() => navigate(`${basePath}/lesson/${lesson._id}`):(<Alert variant="info">
           <i className="bi bi-info-circle me-2"></i>
     Please Login first to access the lesson.
-        </Alert>}
+        </Alert>)}
             >
               <div className="lesson-content">
                 <Badge className="lesson-badge" bg="secondary">
