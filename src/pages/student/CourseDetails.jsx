@@ -232,7 +232,7 @@ function CourseDetails() {
             <ListGroup.Item
               key={lesson._id}
               className="lesson-item"
-              onClick={() => navigate(`${basePath}/lesson/${lesson._id}`)}
+              onClick={basePath?() => navigate(`${basePath}/lesson/${lesson._id}`):() => navigate("/login")}
             >
               <div className="lesson-content">
                 <Badge className="lesson-badge" bg="secondary">
