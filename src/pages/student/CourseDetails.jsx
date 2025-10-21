@@ -103,7 +103,7 @@ function CourseDetails() {
             <ListGroup.Item
               key={lesson._id}
               className="lesson-item"
-              onClick={basePath?() => navigate(`${basePath}/lesson/${lesson._id}`):alert('Please login as student to access lessons')}
+              onClick={basePath?() => navigate(`${basePath}/lesson/${lesson._id}`):()=>useNavigate("/login")}
             >
               <div className="lesson-content">
                 <Badge className="lesson-badge" bg="secondary">
