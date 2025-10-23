@@ -1,0 +1,471 @@
+/* ------------------------------
+   GLOBAL STYLES
+------------------------------ */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
+  color: #0f172a;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+}
+
+/* Gradient text styling for hero titles */
+.gradient-text {
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Responsive Utility */
+@media (max-width: 756px) {
+  h1.display-3 {
+    font-size: 2.2rem;
+  }
+  .hero-btns {
+    flex-direction: column !important;
+  }
+  .navbar-nav {
+    text-align: center;
+  }
+}
+
+/* ------------------------------
+   NAVBAR STYLES
+------------------------------ */
+.navbar-edunova {
+  background-color: #ffffff;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+  padding: 0.8rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #0f766e !important;
+}
+
+.nav-link {
+  color: #0f172a !important;
+  margin: 0 0.6rem;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.nav-link:hover {
+  color: #14b8a6 !important;
+  transform: translateY(-1px);
+}
+
+.navbar-btn {
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+  color: #fff !important;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  transition: all 0.3s;
+}
+
+.navbar-btn:hover {
+  opacity: 0.9;
+}
+
+/* ------------------------------
+   HERO SECTION
+------------------------------ */
+.hero-section {
+  background: linear-gradient(to right, #f8fafc, #ffffff);
+  padding: 4rem 1rem;
+}
+
+.hero-section .lead {
+  color: #475569;
+  font-size: 1.1rem;
+}
+
+/* ------------------------------
+   SCROLL ANIMATIONS
+------------------------------ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ------------------------------
+   FEATURES SECTION
+------------------------------ */
+.feature-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
+}
+
+/* ------------------------------
+   HOW IT WORKS
+------------------------------ */
+.how-card {
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+}
+
+.how-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(20, 184, 166, 0.25);
+}
+
+.how-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+  color: white;
+  font-size: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+/* ------------------------------
+   TESTIMONIALS SECTION
+------------------------------ */
+.testimonial-section {
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+  color: white;
+  padding: 4rem 1rem;
+}
+
+.testimonial-card {
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  transition: all 0.4s;
+}
+
+.testimonial-card:hover {
+  transform: scale(1.03);
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: #ffffff;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+
+/* ------------------------------
+   CTA SECTION
+------------------------------ */
+.cta-card {
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  padding: 3rem 2rem;
+}
+
+/* ------------------------------
+   FOOTER SECTION
+------------------------------ */
+/* 🌙 Footer Styling */
+.footer-section {
+  background: #0f172a;
+  color: white;
+}
+
+.text-gray {
+  color: gray !important;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: gray;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #14b8a6; /* teal accent */
+}
+
+/* 🔹 Divider */
+.footer-divider {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* 📱 RESPONSIVE LAYOUT FIXES */
+@media (max-width: 767px) {
+  /* Make footer split into 2 columns on mobile */
+  .footer-section .row > div {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Slight tightening for smaller phones */
+  .footer-section .row > div {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+
+/* 🌟 Testimonials Section */
+.testimonials-section {
+  overflow: hidden;
+  position: relative;
+}
+
+.testimonial-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.testimonial-track {
+  display: flex;
+  gap: 1.5rem;
+  animation: scrollTestimonials 4s linear infinite;
+}
+
+.testimonial-card {
+  flex: 0 0 calc(33.333% - 1rem);
+  border-radius: 16px;
+  background: #ffffff;
+  color: #0f172a;
+  padding: 2rem 1rem;
+  min-height: 250px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Infinite Scroll Animation */
+@keyframes scrollTestimonials {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ✨ Responsive Styling */
+@media (max-width: 992px) {
+  .testimonial-card {
+    flex: 0 0 calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    flex: 0 0 calc(100% - 1rem);
+  }
+}
+
+/* 🌈 Hero Image Container */
+.hero-image-col {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* 📸 Main Image */
+.hero-image {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* 🌈 HERO IMAGE + CRYSTALS */
+.hero-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-image {
+  position: relative;
+  z-index: 2;
+  width: 85%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* 💎 Base Crystal Style */
+.crystal {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  filter: blur(45px);
+  opacity: 0.75;
+  transition: all 0.5s ease;
+}
+
+/* 🔵 Top-Right Crystal */
+.crystal-top-right {
+  top: -40px;
+  right: -60px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle at center, #14b8a6 0%, #0f766e 70%);
+}
+
+/* 🟣 Bottom-Left Crystal */
+.crystal-bottom-left {
+  bottom: -40px;
+  left: -60px;
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(circle at center, #3b82f6 0%, #06b6d4 80%);
+}
+
+/* ✨ Hover Glow Animation */
+.hero-image-wrapper:hover .crystal-top-right {
+  transform: translate(10px, -10px) scale(1.05);
+}
+.hero-image-wrapper:hover .crystal-bottom-left {
+  transform: translate(-10px, 10px) scale(1.05);
+}
+
+/* 📱 RESPONSIVE SIZES */
+@media (max-width: 992px) {
+  .hero-image {
+    max-width: 320px;
+  }
+
+  .crystal-top-right {
+    width: 120px;
+    height: 120px;
+    top: -25px;
+    right: -40px;
+  }
+
+  .crystal-bottom-left {
+    width: 100px;
+    height: 100px;
+    bottom: -25px;
+    left: -35px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-image {
+    max-width: 260px;
+  }
+
+  .crystal-top-right {
+    width: 90px;
+    height: 90px;
+    top: -15px;
+    right: -25px;
+  }
+
+  .crystal-bottom-left {
+    width: 70px;
+    height: 70px;
+    bottom: -15px;
+    left: -20px;
+  }
+}
+/* ⚙️ How It Works Section */
+.how-it-works-section {
+  background: #d8dbde;
+ 
+}
+
+/* 🧩 Equal-Sized Cards */
+.how-card {
+  border-radius: 1rem;
+  min-height: 320px; /* Ensures all cards same size */
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  transition: all 0.3s ease;
+ 
+}
+
+.how-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 1px 4px 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* 🔵 Number Circle */
+.how-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0f6076, #af21c1);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.4);
+}
+
+/* 📱 Responsiveness */
+@media (max-width: 992px) {
+  .how-card {
+    min-height: 280px;
+  }
+
+  .how-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .how-card {
+    min-height: 250px;
+  }
+
+  .how-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.3rem;
+  }
+}
+

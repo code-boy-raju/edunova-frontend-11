@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { store } from './redux/store';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

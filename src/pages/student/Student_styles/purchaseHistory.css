@@ -1,0 +1,249 @@
+/* Purchase History Container */
+.purchase-history-container {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Page Header */
+.page-header {
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.page-header h2 {
+  font-size: 2rem;
+  color: #1a202c;
+}
+
+.purchase-count-badge {
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+}
+
+/* Statistics Cards */
+.stat-card {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+.stat-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.8rem;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Empty State */
+.empty-state-card {
+  border-radius: 16px;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-icon {
+  font-size: 6rem;
+  color: #cbd5e0;
+}
+
+/* Purchase Table */
+.purchase-table-card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.purchase-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.purchase-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.purchase-table thead th {
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 1.25rem 1rem;
+  border: none;
+}
+
+.purchase-table tbody tr {
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.purchase-table tbody tr:hover {
+  background: #f7fafc;
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.purchase-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.purchase-table tbody td {
+  padding: 1.25rem 1rem;
+  vertical-align: middle;
+}
+
+/* Course Thumbnail in Table */
+.course-thumbnail {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.course-number {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* Badges */
+.category-badge {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge {
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Mobile Purchase Cards */
+.purchase-mobile-card {
+  border-radius: 12px;
+  border-left: 4px solid #38e4bc !important;
+  transition: all 0.3s ease;
+}
+
+.purchase-mobile-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.purchase-meta {
+  padding-top: 0.75rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Loading Container */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .purchase-count-badge {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .stat-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .empty-icon {
+    font-size: 4rem;
+  }
+}
+
+/* Button Animations */
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Table Hover Effects */
+.purchase-row:hover .course-thumbnail {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Custom Scrollbar for Table */
+.purchase-table-card::-webkit-scrollbar {
+  height: 8px;
+}
+
+.purchase-table-card::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.purchase-table-card::-webkit-scrollbar-thumb {
+  background: #1cd6aa;
+  border-radius: 10px;
+}
+
+.purchase-table-card::-webkit-scrollbar-thumb:hover {
+  background: #5568d3;
+}

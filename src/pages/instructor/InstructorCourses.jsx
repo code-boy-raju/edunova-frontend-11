@@ -50,7 +50,8 @@ function InstructorCourses() {
           variant="success" 
           onClick={() => navigate('/instructor-dashboard/create-course')}
         >
-          ➕ Create New Course
+            <i className="bi bi-plus-circle nav-icon"></i>
+            Create New Course
         </Button>
       </div>
 

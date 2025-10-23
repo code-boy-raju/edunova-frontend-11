@@ -22,6 +22,8 @@ import CreateLesson from './pages/instructor/CreateLesson';
 import ProtectedRoute from './components/ProtectedRoute';
 import WelcomePage from './pages/Home';
 import NotFound from './components/Notfound';
+import PurchaseHistory from './pages/student/PurchaseHistory';
+import Profile from './pages/student/Profile';
 function App() {
   const { user } = useSelector(state => state.auth);
 
@@ -50,6 +52,8 @@ function App() {
         <Route path="lesson/:id" element={<LessonView />} />
         <Route path="quiz/:id" element={<QuizPage />} />
         <Route path="results" element={<ResultsPage />} />
+         <Route path="purchase-history" element={<PurchaseHistory />} />
+          <Route path="profile" element={<Profile />} />
       </Route>
 
       {/* Instructor Routes */}
