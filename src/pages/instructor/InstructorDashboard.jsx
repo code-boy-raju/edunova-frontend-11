@@ -4,7 +4,7 @@ import { Outlet, NavLink, useNavigate,Link } from "react-router-dom";
 import { Container, Row, Col, Nav, Button, Offcanvas } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/actions/authActions";
-import "./instructor_styles/InstructorDashboard.css";
+import "./instructor_styles/instructorDashboard.css";
 import { FaLinkedin, FaTwitter, FaInstagram, FaFacebook } from "react-icons/fa";
 
 function InstructorDashboard() {
