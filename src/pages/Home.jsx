@@ -4,6 +4,16 @@ import { useNavigate, Link, Outlet } from "react-router-dom";
 import { Container, Row, Col, Card, Button, Navbar, Nav, Carousel } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { useEffect,useState } from "react";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
+<LazyLoadImage
+  alt="example"
+  height={200}
+  src="real-image.jpg"
+  effect="blur"
+  width={200}
+/>
+
 import AOS from "aos";
 import "aos/dist/aos.css";
 // import "bootstrap/dist/css/bootstrap.min.css";
@@ -169,11 +179,12 @@ function WelcomePage() {
   <div className="crystal crystal-top-right"></div>
   <div className="crystal crystal-bottom-left"></div>
 
-  <img
-    src="/student png.png"
-    alt="Learning illustration"
-    className="img-fluid hero-image"
-  />
+<LazyLoadImage
+  alt="example"
+  src="/student png.png"
+  className="img-fluid hero-image"
+  effect="blur"
+/>
 </Col>
 
 

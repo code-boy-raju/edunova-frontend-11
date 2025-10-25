@@ -1,37 +1,40 @@
 
-import React from 'react';
+
+// export default App;
+import React, { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import StudentSignUp from './pages/auth/Studentsignup';
-import InstructorSignUp from './pages/auth/InstructorSignup';
-import LoginPage from './pages/auth/Login';
-import OtpVerifyPage from './pages/auth/Otpverify';
-import MessageBox from './pages/Message-Box';
-import StudentDashboard from './pages/student/StudentDashboard';
-import InstructorDashboard from './pages/instructor/InstructorDashboard';
-import CourseList from './pages/student/CourseList';
-import CourseDetails from './pages/student/CourseDetails';
-import LessonView from './pages/student/LessonView';
-import QuizPage from './pages/student/QuizPage';
-import ResultsPage from './pages/student/ResultsPage';
-import InstructorCourses from './pages/instructor/InstructorCourses';
-import CreateCourse from './pages/instructor/CreateCourse';
-import EditCourse from './pages/instructor/EditCourse';
-import ManageLessons from './pages/instructor/ManageLessons';
-import CreateLesson from './pages/instructor/CreateLesson';
 import ProtectedRoute from './components/ProtectedRoute';
 import WelcomePage from './pages/Home';
-import NotFound from './components/Notfound';
-import PurchaseHistory from './pages/student/PurchaseHistory';
-import Profile from './pages/student/Profile';
+// ✅ Lazy-loaded components
+const StudentSignUp = lazy(() => import('./pages/auth/Studentsignup'));
+const InstructorSignUp = lazy(() => import('./pages/auth/InstructorSignup'));
+const LoginPage = lazy(() => import('./pages/auth/Login'));
+const OtpVerifyPage = lazy(() => import('./pages/auth/Otpverify'));
+const MessageBox = lazy(() => import('./pages/Message-Box'));
+const CourseList = lazy(() => import('./pages/student/CourseList'));
+const CourseDetails = lazy(() => import('./pages/student/CourseDetails'));
+const StudentDashboard = lazy(() => import('./pages/student/StudentDashboard'));
+const InstructorDashboard = lazy(() => import('./pages/instructor/InstructorDashboard'));
+const LessonView = lazy(() => import('./pages/student/LessonView'));
+const QuizPage = lazy(() => import('./pages/student/QuizPage'));
+const ResultsPage = lazy(() => import('./pages/student/ResultsPage'));
+const InstructorCourses = lazy(() => import('./pages/instructor/InstructorCourses'));
+const CreateCourse = lazy(() => import('./pages/instructor/CreateCourse'));
+const EditCourse = lazy(() => import('./pages/instructor/EditCourse'));
+const ManageLessons = lazy(() => import('./pages/instructor/ManageLessons'));
+const CreateLesson = lazy(() => import('./pages/instructor/CreateLesson'));
+const NotFound = lazy(() => import('./components/Notfound'));
+const PurchaseHistory = lazy(() => import('./pages/student/PurchaseHistory'));
+const Profile = lazy(() => import('./pages/student/Profile'));
+
 function App() {
-  const { user } = useSelector(state => state.auth);
 
   return (
-    <Routes>
-      {/* welcome page//main page */}
-      <Route path="/" element={<WelcomePage/>}/>
-      {/* Auth routes */}
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+
+        {/* 🏠 Public Routes */}
+        <Route path="/" element={<WelcomePage />} />
         <Route path="student-signup" element={<StudentSignUp />} />
         <Route path="instructor-signup" element={<InstructorSignUp />} />
         <Route path="login" element={<LoginPage />} />
@@ -40,40 +43,47 @@ function App() {
         <Route path="courses" element={<CourseList />} />
         <Route path="course/:id" element={<CourseDetails />} />
 
-      {/* Student Routes */}
-      <Route path="/student-dashboard" element={
-        <ProtectedRoute allowedRoles={['student']}>
-          <StudentDashboard />
-        </ProtectedRoute>
-      }>
-        <Route index element={<Navigate to="courses" replace />} />
-        <Route path="courses" element={<CourseList />} />
-        <Route path="course/:id" element={<CourseDetails />} />
-        <Route path="lesson/:id" element={<LessonView />} />
-        <Route path="quiz/:id" element={<QuizPage />} />
-        <Route path="results" element={<ResultsPage />} />
-         <Route path="purchase-history" element={<PurchaseHistory />} />
+        {/* 🎓 Student Dashboard */}
+        <Route
+          path="/student-dashboard"
+          element={
+            <ProtectedRoute allowedRoles={['student',"guest"]}>
+              <StudentDashboard/>
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Navigate to="courses" replace />} />
+          <Route path="courses" element={<CourseList />} />
+          <Route path="course/:id" element={<CourseDetails />} />
+          <Route path="lesson/:id" element={<LessonView />} />
+          <Route path="quiz/:id" element={<QuizPage />} />
+          <Route path="results" element={<ResultsPage />} />
+          <Route path="purchase-history" element={<PurchaseHistory />} />
           <Route path="profile" element={<Profile />} />
-      </Route>
+        </Route>
 
-      {/* Instructor Routes */}
-      <Route path="/instructor-dashboard" element={
-        <ProtectedRoute allowedRoles={['instructor']}>
-          <InstructorDashboard />
-        </ProtectedRoute>
-      }>
-        <Route index element={<Navigate to="courses" replace />} />
-        <Route path="courses" element={<InstructorCourses />} />
-        <Route path="create-course" element={<CreateCourse />} />
-        <Route path="edit-course/:id" element={<EditCourse />} />
-        <Route path="course/:id/lessons" element={<ManageLessons />} />
-        <Route path="course/:id/create-lesson" element={<CreateLesson />} />
-      </Route>
+        {/* 🧑‍🏫 Instructor Dashboard */}
+        <Route
+          path="/instructor-dashboard"
+          element={
+            <ProtectedRoute allowedRoles={['instructor']}>
+              <InstructorDashboard />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Navigate to="courses" replace />} />
+          <Route path="courses" element={<InstructorCourses />} />
+          <Route path="create-course" element={<CreateCourse />} />
+          <Route path="edit-course/:id" element={<EditCourse />} />
+          <Route path="course/:id/lessons" element={<ManageLessons />} />
+          <Route path="course/:id/create-lesson" element={<CreateLesson />} />
+        </Route>
 
-      <Route path="*" element={<NotFound/>} />
-    </Routes>
+        {/* ❌ Not Found */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
   );
 }
-
 
 export default App;

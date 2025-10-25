@@ -59,8 +59,8 @@ function StudentDashboard() {
           <div className="status-indicator"></div>
         </div>
         
-        <h6 className="user-name mb-1">{user?.username}</h6>
-        <small className="user-email d-block text-truncate px-3">{user?.email}</small>
+        <h6 className="user-name mb-1">{user?user.username:"Guest"}</h6>
+        <small className="user-email d-block text-truncate px-3">{user?user.email:"guest@gmail.com"}</small>
         
         {purchasedCount > 0 && (
           <Badge bg="success" className="mt-2">

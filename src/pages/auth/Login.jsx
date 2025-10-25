@@ -1,64 +1,7 @@
-// import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { loginAction } from '../../redux/actions/authActions';
-// import { Toast, ToastContainer, Spinner } from 'react-bootstrap';
-// import { useNavigate } from 'react-router-dom';
 
-// function LoginPage() {
-//   const [formdata, setFormdata] = useState({ email: "", password: "" });
-//   const [toastMsg, setToastMsg] = useState("");
-//   const [showToast, setShowToast] = useState(false);
-//   const [loading, setLoading] = useState(false);
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-
-//   const handleChange = (e) => setFormdata({ ...formdata, [e.target.name]: e.target.value });
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     setLoading(true);
-//     dispatch(loginAction(formdata, navigate, (msg) => {
-//       setToastMsg(msg);
-//       setShowToast(true);
-//       setLoading(false);
-//     }));
-//   };
-
-//   return (
-//     <div className="auth-container">
-//       <h2 className="form-title">Login</h2>
-//       <form onSubmit={handleSubmit} className="auth-form">
-//         <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-//         <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
-//         <button type="submit" className="submit-btn" disabled={loading}>
-//           {loading ? <Spinner size="sm" animation="border" /> : "Login"}
-//         </button>
-//       </form>
-
-//       <ToastContainer position="top-end" className="pe-2" style={{ marginTop: "4rem" }}>
-//         <Toast
-//           onClose={() => setShowToast(false)}
-//           show={showToast}
-//           delay={5000}
-//           autohide
-//           bg={toastMsg.includes("successful") ? "success" : "danger"}
-//         >
-//           <Toast.Header>
-//             <strong className="me-auto">
-//               {toastMsg.includes("successful") ? "Login Success" : "Login Error"}
-//             </strong>
-//           </Toast.Header>
-//           <Toast.Body>{toastMsg}</Toast.Body>
-//         </Toast>
-//       </ToastContainer>
-//     </div>
-//   );
-// }
-
-// export default LoginPage;
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginAction } from '../../redux/actions/authActions';
+import { loginAction ,guestLogin} from '../../redux/actions/authActions';
 import { Toast, ToastContainer, Spinner, Form } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -68,6 +11,7 @@ function LoginPage() {
   const [showToast, setShowToast] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+ 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -82,6 +26,12 @@ function LoginPage() {
       setLoading(false);
     }));
   };
+
+const handleSubmitguest=()=>{
+ 
+    dispatch(guestLogin(navigate));
+}
+
 
   return (
     <div className="auth-container">
@@ -153,6 +103,9 @@ function LoginPage() {
 
           <div className="text-center mt-4">
             <p className="text-muted">
+               <Link to="/student-dashboard" onClick={handleSubmitguest} style={{ color: 'var(--primary-color)', fontWeight: 600 ,}}>
+              login as Guest 
+              </Link><br/>
               Don't have an account?{' '}
               <Link to="/student-signup" style={{ color: 'var(--primary-color)', fontWeight: 600 }}>
                 Sign up as Student
@@ -161,6 +114,8 @@ function LoginPage() {
               <Link to="/instructor-signup" style={{ color: 'var(--primary-color)', fontWeight: 600 }}>
                 Instructor
               </Link>
+             
+         
             </p>
           </div>
         </div>

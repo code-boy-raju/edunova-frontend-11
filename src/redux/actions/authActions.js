@@ -223,7 +223,7 @@ export const instructorSignUp = (formData, navigate, toastCallback) => async (di
 };
 
 // LOGIN
-export const loginAction = (formData, navigate, toastCallback) => async (dispatch) => {
+export const loginAction = (formData , navigate, toastCallback) => async (dispatch) => {
   try {
     dispatch({ type: AUTH_REQUEST });
     const { data } = await API.post("/user/login", formData);
@@ -243,6 +243,25 @@ export const loginAction = (formData, navigate, toastCallback) => async (dispatc
     toastCallback(msg);
   }
 };
+
+// GUEST LOGIN
+export const guestLogin = (navigate) => (dispatch) => {
+  const guestUser = {
+    username: "Student",
+    email: "guest@edunova.com",
+    role: "guest",
+  };
+
+  // Save user data locally
+  localStorage.setItem("user", JSON.stringify(guestUser));
+
+  // Dispatch to Redux
+  dispatch({ type: LOGIN_SUCCESS, payload: guestUser });
+
+  // Navigate to dashboard
+  navigate("/student-dashboard");
+};
+
 
 // LOGOUT
 export const logout = () => (dispatch) => {

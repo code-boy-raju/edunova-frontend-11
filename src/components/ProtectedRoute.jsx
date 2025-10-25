@@ -10,7 +10,7 @@ function ProtectedRoute({ children, allowedRoles }) {
     return <Navigate to="/login" replace />;
   }
 
-  if (allowedRoles && !allowedRoles.includes(user.role)) {
+  if (allowedRoles && !allowedRoles.includes(user?.role) ) {
     return (
       <Container className="mt-5">
         <Alert variant="danger">
